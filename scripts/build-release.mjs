@@ -53,7 +53,7 @@ html = html.replace('"name": "OS SUITE",\n  "description":', `"name": "OS SUITE"
 await writeFile(indexPath, html);
 
 await writeFile(path.join(dist, "robots.txt"), `User-agent: *\nAllow: /\n\nSitemap: ${base}/sitemap.xml\n`);
-await writeFile(path.join(dist, "sitemap.xml"), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n  <url><loc>${base}/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>\n  <url><loc>${base}/legal/privacy.html</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>\n  <url><loc>${base}/legal/terms.html</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>\n  <url><loc>${base}/legal/cookies.html</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>\n</urlset>\n`);
+await writeFile(path.join(dist, "sitemap.xml"), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n  <url><loc>${base}/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>\n</urlset>\n`);
 
 const textExt = new Set([".html", ".js", ".mjs", ".json", ".txt", ".xml", ".md"]);
 const badPatterns = [/\[(?=[^\]]*[A-ZÀ-Ü])[A-ZÀ-Ü0-9 /_-]+\]/g, /example\.com/g, /__BASE_URL__/g, /TODO/g, /FIXME/g, /Versione pre-pubblicazione/g];
