@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+# The absolute Sitemap URL is generated at build time from the Vercel production URL.

@@ -1,0 +1,14 @@
+{
+  "site": {
+    "public_base_url": "",
+    "canonical_path": "/",
+    "hosting_provider": "Vercel",
+    "url_strategy": "Resolved automatically at build time from PUBLIC_BASE_URL, VERCEL_PROJECT_PRODUCTION_URL or VERCEL_URL."
+  },
+  "legal": {
+    "operator_name": "Matteo Maffezzoli",
+    "contact_email": "seller.os001@gmail.com",
+    "privacy_email": "seller.os001@gmail.com",
+    "governing_law_and_disputes": "Il sito e i presenti Termini sono regolati dalla legge italiana, fatti salvi i diritti inderogabili riconosciuti all’utente dalla normativa eventualmente applicabile. Se l’utente agisce in qualità di consumatore, per le controversie resta competente il giudice del luogo di residenza o di domicilio del consumatore nei casi previsti dalla normativa applicabile. Negli altri casi, la competenza è determinata secondo le regole ordinarie previste dalla legge italiana."
+  }
+}
