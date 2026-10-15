@@ -3,7 +3,8 @@
   "private": true,
   "version": "1.0.0",
   "scripts": {
-    "build": "node scripts/build-release.mjs"
+    "build": "node scripts/verify-ecosystem.mjs && node scripts/build-release.mjs",
+    "check:ecosystem": "node scripts/verify-ecosystem.mjs"
   },
   "engines": {
     "node": ">=20"
