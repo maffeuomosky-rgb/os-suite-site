@@ -1,0 +1,27 @@
+name: OS SUITE — ecosystem integration checks
+on:
+  push:
+    branches: [feature/ecosystem-seller-web]
+  pull_request:
+    paths:
+      - "index.html"
+      - "data/products.js"
+      - "scripts/verify-ecosystem.mjs"
+      - "scripts/build-release.mjs"
+      - "package.json"
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Validate public product registry and scripts
+        run: npm run check:ecosystem
+      - name: Compile static OS SUITE site without deploying
+        run: npm run build
+        env:
+          PUBLIC_BASE_URL: https://os-suite-site.vercel.app
