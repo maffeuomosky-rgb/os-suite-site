@@ -51,16 +51,16 @@
   "@type": "ItemList",
   "name": "OS SUITE Product Collection",
   "itemListOrder": "https://schema.org/ItemListOrderAscending",
-  "numberOfItems": 2,
+  "numberOfItems": 3,
   "itemListElement": [
     {
       "@type": "ListItem",
       "position": 1,
       "item": {
         "@type": "SoftwareApplication",
-        "name": "Seller OS",
+        "name": "Seller OS Sheet Edition",
         "applicationCategory": "BusinessApplication",
-        "operatingSystem": "Web",
+        "operatingSystem": "Google Sheets",
         "description": "Prodotti, inventario, vendite, costi e margini in un unico sistema operativo",
         "url": "https://seller-os-site-eight.vercel.app/"
       }
@@ -75,6 +75,16 @@
         "operatingSystem": "Web",
         "description": "Immobili, prenotazioni, ricavi, costi, occupazione e redditività in un unico sistema operativo",
         "url": "https://host-os-site.vercel.app/"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "item": {
+        "@type": "SoftwareApplication",
+        "name": "Seller OS Web",
+        "applicationCategory": "BusinessApplication",
+        "description": "SaaS in sviluppo, distinto dalla Sheet Edition. Inventario, vendite, workspace e analisi."
       }
     }
   ]
@@ -1760,7 +1770,7 @@ body{background:#f8fafc;text-rendering:optimizeLegibility;-webkit-font-smoothing
 <div class="section-heading reveal">
 <p class="eyebrow">THE OS COLLECTION</p>
 <h2 id="collectionTitle">Specialized systems<br/><span>One ecosystem</span></h2>
-<p>Ogni OS nasce per un business specifico. Tutti condividono la stessa architettura, lo stesso linguaggio e la stessa filosofia operativa</p>
+<p>Ogni OS nasce per un business specifico. Seller OS è disponibile come Sheet Edition (Google Sheets, una tantum); Seller OS Web è la versione SaaS in sviluppo, con accesso e abbonamento separati.</p>
 </div>
 <div class="collection-toolbar reveal">
 <div class="filters" id="collectionFilters" role="group" aria-label="Filtra i sistemi della collection"></div>
@@ -1855,7 +1865,7 @@ const rail=document.getElementById('rail')
 const liveEl=document.getElementById('carouselLive')
 
 function makeGhost(p){
-  return `<div class="ghost-package" aria-hidden="true"><span class="ghost-brand">OS SUITE</span><strong>OS ${p.number}</strong><small>COMING NEXT</small><i>+</i></div>`
+  return `<div class="ghost-package" aria-hidden="true"><span class="ghost-brand">OS SUITE</span><strong>OS undefined</strong><small>COMING NEXT</small><i>+</i></div>`
 }
 
 function circularDistance(i,a,n){
@@ -2117,10 +2127,10 @@ function renderCollection(filter='All'){
   setTimeout(()=>{
     if(token!==collectionToken)return
     grid.innerHTML=list.map(p=>`<article class="collection-card ${p.status==='coming-soon'?'is-future':''}" style="--card-accent:${p.accent};--card-accent-rgb:${p.accentRgb}">
-      <div class="collection-card-top"><span class="collection-number">${p.number}</span><span class="collection-status ${p.status}"><i></i>${p.status==='available'?'Disponibile':'In arrivo'}</span></div>
+      <div class="collection-card-top"><span class="collection-number">${p.number}</span><span class="collection-status ${p.status}"><i></i>${p.status==='available'?'Disponibile':p.stage==='in-development'?'In sviluppo':'In arrivo'}</span></div>
       <div class="collection-visual">${p.package?`<img src="${p.package}" alt="${p.name}" width="800" height="1021" loading="lazy" decoding="async" fetchpriority="low">`:makeGhost(p)}</div>
-      <div class="collection-meta"><div><small>${p.category}</small><h3>${p.name}${p.version?` <em>${p.version}</em>`:''}</h3><p>${p.status==='available'?p.tagline:'Progettato per entrare nell’ecosistema'}</p></div></div>
-      ${p.status==='available'&&p.website?`<a class="collection-link" href="${p.website}" aria-label="Esplora ${p.name}">Esplora <span>↗</span></a>`:`<span class="collection-future-label">OS SUITE / SISTEMA FUTURO</span>`}
+      <div class="collection-meta"><div><small>${p.category}</small><h3>${p.name}${p.version?` <em>${p.version}</em>`:''}</h3><p>${p.edition==='Sheet Edition'?'Sheet Edition · Google Sheets · Acquisto una tantum':p.tagline||'Progettato per entrare nell’ecosistema'}</p></div></div>
+      ${p.status==='available'&&p.website?`<a class="collection-link" href="${p.website}" aria-label="Esplora ${p.name}">Esplora <span>↗</span></a>`:`<span class="collection-future-label">${p.stage==='in-development'?'SELLER OS WEB / SAAS IN SVILUPPO':'OS SUITE / SISTEMA FUTURO'}</span>`}
     </article>`).join('')
     grid.classList.remove('switching-grid')
   },170)
